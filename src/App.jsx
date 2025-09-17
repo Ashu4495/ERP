@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from '@mui/material';
 import "./Home.css";
+import logoImg from "./assets/logo.jpeg";
 import admissionLogo from "./assets/admission.png";
 import libraryLogo from "./assets/library.png";
 import attendanceLogo from "./assets/attendance.jpg";
@@ -30,7 +30,7 @@ function FullWidthFiveButtons() {
     <main className="page">
       <div className="landing-avatar">
         <Button onClick={handleClick} sx={{ minWidth: 0, p: 0, display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Avatar sx={{ width: 40, height: 40 }} src="/logo.jpeg">A</Avatar>
+          <Avatar sx={{ width: 40, height: 40 }} src={logoImg}>A</Avatar>
           <span style={{ fontWeight: 700, color: '#0b2239' }}>Ashish Choudhary ▾</span>
         </Button>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
@@ -74,7 +74,7 @@ export default function App() {
   const AICTEPortal = React.lazy(() => import("./AICTEPortal"));
   const StudentPortal = React.lazy(() => import("./StudentPortal"));
   return (
-    <Router>
+    <Router basename="/ERP">
       <React.Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<FullWidthFiveButtons />} />

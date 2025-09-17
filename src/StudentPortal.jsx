@@ -40,6 +40,7 @@ import {
 import { jsPDF } from 'jspdf';
 
 import './StudentPortal.css';
+import logoImg from './assets/logo.jpeg';
 
 // Static data lifted to module scope for better performance and stable references
 const SUBJECTS = [
@@ -219,7 +220,7 @@ export default function StudentPortal() {
       <Box className="sp-sidebar">
         <Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-            <Avatar sx={{ width: 48, height: 48 }} src="/logo.jpeg">A</Avatar>
+            <Avatar sx={{ width: 48, height: 48 }} src={logoImg}>A</Avatar>
             <Box>
               <Typography className="sp-profile-name">Ashish Choudhary</Typography>
               <Typography className="sp-profile-sub" onClick={handleProfileClick}>View Profile ▾</Typography>
