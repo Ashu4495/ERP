@@ -1,0 +1,121 @@
+/* Layout */
+.student-portal-root { display: flex; min-height: 100vh; font-family: 'Roboto', sans-serif; }
+.student-portal-main { flex: 1; padding: 20px; overflow-y: auto; background: #f5f7fb; box-sizing: border-box; }
+.student-portal-right { width: 280px; padding: 12px; border-left: 1px solid #e2e8f0; background: #f9f9fb; overflow-y: auto; box-sizing: border-box; }
+
+/* Sidebar */
+.sp-sidebar { width: 240px; background: #f9f9fb; min-height: 100vh; padding: 16px; box-sizing: border-box; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; }
+.sp-nav-btn { justify-content: flex-start; }
+.sp-profile-name { font-weight: 700; }
+.sp-profile-sub { font-size: 12px; color: #64748b; cursor: pointer; }
+
+/* Card */
+.sp-card { background: #ffffff; border-radius: 16px; padding: 16px; color: #0b2239; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.sp-card.center { text-align: center; }
+.sp-card.metric { min-height: 120px; display: flex; flex-direction: column; justify-content: center; padding-top: 8px; }
+
+/* Ensure consistent card content alignment and spacing */
+.student-portal-main .sp-card { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding: 14px; box-sizing: border-box; }
+.student-portal-main .sp-card > * { width: 100%; }
+
+/* Make metric numbers more visually aligned */
+.sp-card h3, .sp-card h5, .sp-card h6, .sp-card .MuiTypography-root[variant='h3'] { text-align: left; margin: 0; }
+
+/* Attendance */
+.sp-table { width: 100%; border-collapse: collapse; }
+.sp-table th, .sp-table td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
+
+/* Gazette */
+.gazette-btn { color: #2563eb; border-color: #bfdbfe; justify-content: flex-start; transition: transform 180ms, box-shadow 180ms; padding: 8px; border-radius: 4px; text-transform: uppercase; font-size: 13px; }
+.gazette-btn:hover { transform: translateX(6px); box-shadow: 0 6px 18px rgba(2,6,23,0.08); }
+.gazette-btn { width: 100%; text-align: left; }
+.gazette-btn:active { transform: translateX(2px) scale(0.995); }
+
+/* Exam & Gazette two-column alignment */
+.exam-gazette-row { display: flex; gap: 16px; }
+.exam-card, .gazette-card { flex: 1; display: flex; flex-direction: column; }
+.exam-card .sp-card, .gazette-card .sp-card { flex: 1; display: flex; flex-direction: column; }
+.chart-legend { display: flex; gap: 12px; align-items: center; margin-top: 8px; margin-left: 4px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #334155; }
+.legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
+
+/* Bar label above bars (small) */
+.recharts-bar-label { font-size: 11px; fill: #0b2239; font-weight: 700; }
+
+/* subtle entrance animation for chart area */
+.chart-appear { animation: float-in 480ms cubic-bezier(.2,.9,.2,1); }
+@keyframes float-in {
+	from { transform: translateY(8px); opacity: 0; }
+	to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive: stack cards on small screens */
+@media (max-width: 900px) {
+	.exam-gazette-row { flex-direction: column; }
+	.gazette-btn { width: 100%; }
+	.student-portal-root { flex-direction: column; }
+	.sp-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+	.student-portal-right { width: 100%; border-left: none; border-top: 1px solid #e2e8f0; }
+	.student-portal-main { padding: 12px; }
+
+	/* Cards stack and reduce padding */
+	.sp-card { padding: 10px; margin-bottom: 12px; }
+	.sp-card h3, .sp-card h5, .sp-card h6 { font-size: 1.2rem; }
+
+	/* Table font size smaller */
+	.sp-table th, .sp-table td { font-size: 13px; }
+
+	/* Calendar grid adapts */
+	.cal-grid { grid-template-columns: repeat(7, minmax(0,1fr)); gap: 4px; }
+	.cal-day-box { min-height: 36px; }
+}
+
+@media (max-width: 600px) {
+  .student-portal-main { padding: 6px; }
+  .sp-card { padding: 6px; }
+  .sp-sidebar, .student-portal-right { padding: 6px; }
+  .sp-profile-name, .sp-profile-sub { font-size: 13px; }
+  .sp-nav-btn { font-size: 13px; }
+  .cal-title { font-size: 1rem; }
+  .cal-day-name { font-size: 10px; }
+  .legend-item { font-size: 11px; }
+}
+
+	/* Reduce card padding on small screens for better fit */
+	.student-portal-main .sp-card { padding: 10px; }
+}
+
+/* Smaller screens: ensure calendar grid wraps nicely */
+@media (max-width: 600px) {
+  .cal-grid { grid-template-columns: repeat(7, minmax(0,1fr)); gap: 6px; }
+  .cal-day-box { min-height: 44px; }
+}
+
+/* Make Gazette card content centered and spaced */
+.gazette-card .sp-card { justify-content: flex-start; }
+.gazette-card .sp-card .gazette-btn { margin-bottom: 6px; }
+
+/* Calendar */
+.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.cal-title { font-weight: 700; color: #0b2239; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-day-name { color: #64748b; font-size: 11px; padding: 4px 0; text-align: center; }
+.cal-day-box { padding: 4px; border-radius: 4px; min-height: 32px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #e2e8f0; background: #ffffff; }
+.cal-day-num { color: #0b2239; font-size: 12px; }
+.cal-dot { position: absolute; right: 6px; top: 6px; width: 8px; height: 8px; border-radius: 50%; }
+.legend { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+.legend-btn { color: #0b2239; pointer-events: none; padding: 4px 8px; border: 1px solid #bfdbfe; }
+.legend-holiday { background: #e2f5ff; }
+.legend-event { background: #e7f0ff; }
+.legend-exam { background: #f4e8ff; border-color: #d8b4fe; }
+
+/* Syllabus */
+.syl-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.syl-bar { display: flex; gap: 4px; margin-bottom: 6px; }
+.syl-chunk { flex: 1; height: 12px; border-radius: 6px; background: #e2e8f0; transition: transform 150ms; }
+.syl-chunk.active { background: #2563eb; }
+.syl-meta { color: #64748b; font-size: 12px; }
+
+/* Quick Actions */
+.qa-title { margin-bottom: 8px; }
+.qa-stack { display: flex; flex-direction: column; gap: 8px; }

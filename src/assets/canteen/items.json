@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Chinese",
+    "items": [
+      { "id": 101, "name": "Veg Noodles", "price": 70, "img": "veg_noodles.jpg" },
+      { "id": 102, "name": "Manchurian", "price": 80, "img": "manchurian.jpg" },
+      { "id": 103, "name": "Spring Roll", "price": 60, "img": "spring_roll.jpg" }
+    ]
+  },
+  {
+    "category": "Fast Food",
+    "items": [
+      { "id": 201, "name": "Burger", "price": 50, "img": "burger.jpg" },
+      { "id": 202, "name": "French Fries", "price": 40, "img": "fries.jpg" },
+      { "id": 203, "name": "Pizza", "price": 90, "img": "pizza.jpg" }
+    ]
+  },
+  {
+    "category": "Cold Drinks",
+    "items": [
+      { "id": 301, "name": "Coke", "price": 30, "img": "coke.jpg" },
+      { "id": 302, "name": "Sprite", "price": 30, "img": "sprite.jpg" },
+      { "id": 303, "name": "Pepsi", "price": 30, "img": "pepsi.jpg" }
+    ]
+  }
+]

@@ -1,0 +1,180 @@
+/* Global base styles (moved from index.css) */
+:root {
+  --bg: #f8fafc;
+  --text: #0b2239;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Page wrapper: full-viewport with soft gradient background */
+.page {
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive grid:
+   - auto-fit packs as many columns as fit
+   - cards are at least 220px wide and grow to fill 1fr
+*/
+.full-width-buttons-grid {
+  width: 100%;
+  margin-inline: auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+}
+
+/* Card as a semantic button for accessibility and clickability */
+.button-rect {
+  position: relative;
+  border: none;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 48px 32px;
+  display: grid;
+  place-items: center;
+  row-gap: 18px;
+  cursor: pointer;
+  text-align: center;
+
+  /* Base shadow (static, small) */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  min-width: 260px;
+  min-height: 260px;
+  height: 340px;
+
+  /* Smooth, performant transitions */
+  transition: transform 180ms ease, filter 180ms ease;
+
+  /* Create a separate layer for the stronger hover shadow without repaint cost */
+  isolation: isolate;
+}
+
+/* Pseudo-element carries the bigger shadow; we fade its opacity */
+.button-rect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.18);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: -1; /* keeps content above */
+}
+
+.button-rect:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.button-rect:hover::after {
+  opacity: 1;
+}
+
+/* Focus styles for keyboard users */
+.button-rect:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* Logo with gentle float animation */
+.button-logo {
+  width: 80px;
+  height: 80px;
+  animation: logoFloat 1.8s ease-in-out infinite alternate;
+}
+
+/* Name styling */
+.button-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d3a4b;
+  letter-spacing: 0.5px;
+}
+
+/* Entry animation on cards */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply stagger via animation-delay using nth-child */
+.full-width-buttons-grid > .button-rect {
+  animation: fadeInUp 600ms cubic-bezier(.22,.61,.36,1) both;
+}
+.full-width-buttons-grid > .button-rect:nth-child(1) { animation-delay: 60ms; }
+.full-width-buttons-grid > .button-rect:nth-child(2) { animation-delay: 120ms; }
+.full-width-buttons-grid > .button-rect:nth-child(3) { animation-delay: 180ms; }
+.full-width-buttons-grid > .button-rect:nth-child(4) { animation-delay: 240ms; }
+.full-width-buttons-grid > .button-rect:nth-child(5) { animation-delay: 300ms; }
+
+/* Logo float keyframes */
+@keyframes logoFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
+}
+
+/* Optional: tighter columns on very small screens */
+@media (max-width: 420px) {
+  .full-width-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fixed avatar container on landing page */
+.landing-avatar {
+  position: fixed;
+  right: 18px;
+  top: 18px;
+  z-index: 1400;
+  background: #fff;
+  padding: 10px 18px 10px 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.landing-avatar .avatar-initial {
+  width: 40px;
+  height: 40px;
+  background: #bfc9db;
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-avatar .avatar-name {
+  font-weight: 900;
+  color: #1e293b;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-right: 8px;
+}
+
+.landing-avatar .avatar-arrow {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 18px;
+}
