@@ -1,0 +1,7 @@
+[
+  { "roomNo": "101", "type": "Single", "available": true },
+  { "roomNo": "102", "type": "Single", "available": true },
+  { "roomNo": "201", "type": "Double", "available": true },
+  { "roomNo": "202", "type": "Double", "available": false },
+  { "roomNo": "301", "type": "Dormitory", "available": true }
+]
